@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 
 const Toast = ({message, visible = true, success = false}) => {

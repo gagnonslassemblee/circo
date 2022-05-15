@@ -1,13 +1,13 @@
 import {useState} from "react";
 import Toast from '../components/Toast'
-import './Autocomplete.module.css'
+import styles from './Autocomplete.module.css'
 
 /** 
  * This code is inspired from https://codesandbox.io/s/long-wave-0tgqs
  */
 
 
-const AutoComplete = ({getSuggestions}) => {
+const AutoComplete = ({getSuggestions, onEnter}) => {
   const [suggestions, setSuggestions] = useState([]);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -49,6 +49,7 @@ const AutoComplete = ({getSuggestions}) => {
     if (e.keyCode === 13) {
       setInput(suggestions[activeSuggestionIndex].label);
       setActiveSuggestionIndex(0);
+      onEnter(suggestions[activeSuggestionIndex])
       setShowSuggestions(false);
     }
 
@@ -72,13 +73,13 @@ const AutoComplete = ({getSuggestions}) => {
 
   const SuggestionsListComponent = () => {
     return suggestions.length ? (
-      <ul className="suggestions">
+      <ul className={styles.suggestions}>
         {suggestions.map((suggestion, index) => {
           let className;
 
           // Flag the active suggestion with a class
           if (index === activeSuggestionIndex) {
-            className = "suggestion-active";
+            className = styles.suggestion_active
           }
 
           return (
@@ -89,7 +90,7 @@ const AutoComplete = ({getSuggestions}) => {
         })}
       </ul>
     ) : (
-      <div className="no-suggestions">
+      <div className={styles.no_suggestions}>
         <span role="img" aria-label="tear emoji">
           😪
         </span>{" "}
@@ -104,7 +105,7 @@ const AutoComplete = ({getSuggestions}) => {
 
       <input
         type="text"
-        className="auto-complete"
+        className={styles.autoComplete}
         onChange={onChange}
         onKeyDown={onKeyDown}
         value={input}

@@ -1,15 +1,15 @@
 # Trouver sa circonscription
 
 
-Ce projet s'inspire de [projet suivant](https://sav10.github.io/libe-projects/recherche-circo/).
-Le code a été entièrement refondé pour être mis en place dans Next Js.
+Ce projet s'inspire de [la page de recherche Libération](https://sav10.github.io/libe-projects/recherche-circo/) et de [l'auto-complétion](https://codesandbox.io/s/long-wave-0tgqs).
 
-## Getting Started
+Néanmoins, le code a été entièrement re-fondé en Next Js.
 
-First, run the development server:
+## Développement
+
+Installer les dépendances et démarrer le serveur Next Js :
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
 ```

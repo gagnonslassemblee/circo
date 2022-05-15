@@ -1,6 +1,8 @@
+import {useState} from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import AutoComplete from '../components/Autocomplete'
+import Circonscription from '../components/Circonscription'
 import styles from '../styles/Home.module.css'
 
 
@@ -30,10 +32,11 @@ const searchApi = async (query) => {
 
 
 export default function Home() {
+  const [circo, setCirco] = useState()
   return (
     <div className={styles.container}>
       <Head>
-        <title>Soutenez le candidat de votre circonscription</title>
+        <title>Gagnons l&apos;Assemblée</title>
         <meta name="description" content="Page de soutien des candidats" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -43,11 +46,9 @@ export default function Home() {
           Gagnons l&apos;Assemblée !
         </h1>
 
-        <div id="recherche_circo">Recherchez votre circonscription</div>
-        <div id="autocomplete_container">
-          <AutoComplete getSuggestions={searchApi} />
-        </div>
-        <h3 style={{textAlign: "center"}} id="adresse_circo"></h3>
+        <div id="recherche_circo">Rechercher une circonscription en tapant une adresse postale.</div>
+        <AutoComplete getSuggestions={searchApi} onEnter={(circo) => setCirco(circo)} />
+        <Circonscription {...circo} />
       </main >
 
       <footer className={styles.footer}></footer>
