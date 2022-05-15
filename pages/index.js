@@ -1,12 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import AutoComplete from '../components/Autocomplete'
-import Toast from './Toast'
 import styles from '../styles/Home.module.css'
-import '../styles/globals.css'
 
 
 const searchApi = async (query) => {
+  console.log(query)
   try {
     let encodedQuery = encodeURI(query)
 
@@ -14,17 +13,18 @@ const searchApi = async (query) => {
     // Data is array of `Objects` | `Strings`
     const data = await source.json();
 
-    const dataEntries = data.features.map((item) => {
+    const dataEntries = data.features.map((item) => ({
       'label': item.properties.label,
-        'properties': item.properties,
-          'geometry': item.geometry
-    }
+      'properties': item.properties,
+      'geometry': item.geometry
+    })
     );
 
-    return dataEntries
+    console.log(dataEntries)
+    return {"results": dataEntries}
   } catch (error) {
 
-    return error;
+    return {'error': error};
   }
 }
 
@@ -47,7 +47,7 @@ export default function Home() {
         <div id="autocomplete_container">
           <AutoComplete getSuggestions={searchApi} />
         </div>
-        <h3 style="text-align: center;" id="adresse_circo"></h3>
+        <h3 style={{textAlign: "center"}} id="adresse_circo"></h3>
       </main >
 
       <footer className={styles.footer}></footer>

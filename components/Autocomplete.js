@@ -1,4 +1,6 @@
 import {useState} from "react";
+import Toast from '../components/Toast'
+import './Autocomplete.module.css'
 
 /** 
  * This code is inspired from https://codesandbox.io/s/long-wave-0tgqs
@@ -10,21 +12,29 @@ const AutoComplete = ({getSuggestions}) => {
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [input, setInput] = useState("");
+  const [error, setError] = useState(undefined);
 
-  const onChange = (e) => {
+  const onChange = async (e) => {
     const userInput = e.target.value;
-    setSuggestions(getSuggestions(suggestions))
-
-    // Filter our suggestions that don't contain the user's input
-
-    /*  suggestions.filter(
-      (suggestion) =>
-        suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-    );*/
-
     setInput(e.target.value);
-    setActiveSuggestionIndex(0);
-    setShowSuggestions(true);
+
+    if (userInput == "") {
+      setSuggestions([])
+      setShowSuggestions(false);
+      return
+    }
+
+    const request = await getSuggestions(userInput);
+    if (request.error) {
+      setError("Impossible de rechercher votre adresse !")
+      setSuggestions([])
+      setShowSuggestions(false);
+    } else {
+      console.log("results", request.results)
+      setSuggestions(request.results || [])
+      setActiveSuggestionIndex(0);
+      setShowSuggestions(true);
+    }
   };
 
   const onClick = (e) => {
@@ -37,7 +47,7 @@ const AutoComplete = ({getSuggestions}) => {
   const onKeyDown = (e) => {
     // User pressed the enter key
     if (e.keyCode === 13) {
-      setInput(suggestions[activeSuggestionIndex]);
+      setInput(suggestions[activeSuggestionIndex].label);
       setActiveSuggestionIndex(0);
       setShowSuggestions(false);
     }
@@ -52,7 +62,7 @@ const AutoComplete = ({getSuggestions}) => {
 
     // User pressed the down arrow
     else if (e.keyCode === 40) {
-      if (activeSuggestionIndex - 1 === filteredSuggestions.length) {
+      if (activeSuggestionIndex - 1 === suggestions.length) {
         return;
       }
 
@@ -62,7 +72,7 @@ const AutoComplete = ({getSuggestions}) => {
 
   const SuggestionsListComponent = () => {
     return suggestions.length ? (
-      <ul class="suggestions">
+      <ul className="suggestions">
         {suggestions.map((suggestion, index) => {
           let className;
 
@@ -72,14 +82,14 @@ const AutoComplete = ({getSuggestions}) => {
           }
 
           return (
-            <li className={className} key={suggestion} onClick={onClick}>
-              {suggestion}
+            <li className={className} key={index} onClick={onClick}>
+              {suggestion.label}
             </li>
           );
         })}
       </ul>
     ) : (
-      <div class="no-suggestions">
+      <div className="no-suggestions">
         <span role="img" aria-label="tear emoji">
           😪
         </span>{" "}
@@ -90,8 +100,11 @@ const AutoComplete = ({getSuggestions}) => {
 
   return (
     <>
+      {error ? <Toast message={error} success={false} /> : null}
+
       <input
         type="text"
+        className="auto-complete"
         onChange={onChange}
         onKeyDown={onKeyDown}
         value={input}
