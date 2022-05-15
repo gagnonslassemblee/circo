@@ -14,3 +14,276 @@ a {
 * {
   box-sizing: border-box;
 }
+
+html,body {
+            margin: 0;
+            padding: 0;
+            height:100%;
+            width:100%;
+            font-family: sans-serif;
+        }
+
+body {
+    background-color: #f8f8f8;
+}
+
+#autocomplete_container{
+
+max-width: 800px;
+margin: 0 auto;
+}
+
+.autoComplete_wrapper{
+
+}
+
+.autoComplete_wrapper input#autoComplete{
+color: grey;
+border: 0.05rem solid grey;
+    border-radius: 0;
+    background-image:none;
+    height: 2rem;
+}
+
+.autoComplete_wrapper input#autoComplete::placeholder{
+color: grey;
+}
+
+
+#header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+}
+
+
+   @media screen and (min-width: 530px) {
+
+.autoComplete_wrapper input#autoComplete{
+width: 500px;
+}
+
+   }
+
+   @media screen and (max-width: 529px) {
+
+.autoComplete_wrapper input#autoComplete{
+width: 99%;
+}
+
+
+#autocomplete_container {
+    width: 90%;
+}
+
+.autoComplete_wrapper {
+    display: block;
+}
+
+   }
+
+#info{
+    display: flex;
+    column-gap: 3em;
+        row-gap: 1em;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.mini_col{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    min-width: 6em;
+
+}
+
+.mini_row{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+    flex-grow: 1;
+
+}
+
+#graphs{
+display: flex;
+flex-direction: row;
+justify-content: center;
+margin: 0 auto;
+max-width: 800px;
+column-gap: 24px;
+}
+
+#graphs .graph{
+flex-grow: 4;
+
+}
+
+.graph p{
+    
+}
+
+h2#result_circo{
+    font-weight: bold;
+    font-family: 'libesansweb-semicondensed';
+    letter-spacing: 0.04em;
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+h2#resultats_precedents{
+    font-weight: bold;
+    font-family: 'libesansweb-semicondensed';
+    letter-spacing: 0.04em;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    margin-top: 1.2em;
+    margin-bottom: 0;
+}
+
+#left_graph_container p, #right_graph_container p{
+    font-weight: bold;
+    font-family: 'libesansweb-semicondensed';
+    letter-spacing: 0.04em;
+    font-size: .9em;
+    text-transform: uppercase;
+}
+
+.mini_col .title_item{
+    font-weight: bold;
+    font-family: 'libesansweb-semicondensed';
+    letter-spacing: 0.04em;
+    font-size: .9em;
+    text-transform: uppercase;
+    color: grey;
+}
+
+
+#couleur_2017, #actuelle_couleur{
+    margin-left: 0.5em;
+    padding: 8px;
+    border-radius: 16px;
+    border: 0;
+    background-color: rgb(238, 238, 238);
+    font-size: 12px;
+    color: white;
+}
+
+#left_graph_container div.cell, #right_graph_container div.cell{
+
+}
+
+
+@media screen and (max-width: 450px) {
+
+.cell .name, .cell .score{
+font-size: 12px;
+}
+
+
+}
+
+#adresse_circo{
+    line-height: 1em;
+    margin: 0.5em;
+}
+
+
+#result_circo{
+    font-size: 1.15em;
+    text-transform: uppercase;
+    margin: 0.8em;
+}
+
+#recherche_circo{
+    font-weight: bold;
+    font-family: 'libesansweb-semicondensed';
+    letter-spacing: 0.04em;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    margin: 1em;
+}
+
+
+#info_container{
+    border: 0.5px solid #ccc;
+    padding: 10px;
+    background-color: white;
+    margin: 0 10px;
+    margin-bottom: 12px;
+}
+
+
+#resultats{
+    border: 0.5px solid #ccc;
+    padding: 10px;
+    background-color: white;
+    margin: 0 10px;
+}
+
+   @media screen and (min-width: 800px) {
+
+#info_container{
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 12px;
+}
+
+
+#resultats {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+   }
+
+
+@media screen and (max-width: 450px) {
+
+h2#result_circo {
+    font-size: .9em;
+    margin: 0.7em;
+}
+
+.mini_col span {
+    font-size: .7em;
+}
+
+.mini_col .title_item {
+    font-size: .7em;
+}
+
+#couleur_2017, #actuelle_couleur {
+    margin-left: 0;
+    font-size: .7em;
+    padding: 4px;
+    width: 6em;
+}
+
+h2#resultats_precedents {
+    font-size: 1em;
+    margin-top: 0.7em;
+}
+
+#left_graph_container p, #right_graph_container p {
+    font-size: .8em;
+}
+
+#recherche_circo {
+    font-size: 1.1em;
+}
+
+}
+
+@media screen and (max-width: 370px) {
+
+#recherche_circo {
+    font-size: 1em;
+}
+
+}
+
+
