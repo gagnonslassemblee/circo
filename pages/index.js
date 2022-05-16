@@ -7,7 +7,6 @@ import styles from '../styles/Home.module.css'
 
 
 const searchApi = async (query) => {
-  console.log(query)
   try {
     let encodedQuery = encodeURI(query)
 
@@ -22,7 +21,6 @@ const searchApi = async (query) => {
     })
     );
 
-    console.log(dataEntries)
     return {"results": dataEntries}
   } catch (error) {
 
@@ -46,7 +44,7 @@ export default function Home() {
           Gagnons l&apos;Assemblée !
         </h1>
 
-        <div id="recherche_circo">Rechercher une circonscription en tapant une adresse postale.</div>
+        <div id="recherche_circo">Rechercher une circonscription à partir d&apos;une adresse postale.</div>
         <AutoComplete getSuggestions={searchApi} onEnter={(circo) => setCirco(circo)} />
         <Circonscription {...circo} />
       </main >

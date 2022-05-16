@@ -9,7 +9,7 @@ const Toast = ({message, visible = true, success = false}) => {
       const timer = setTimeout(() => {
         setVisibility(false);
       }, 3000);
-      return timer;
+      return () => clearTimeout(timer);
     }
   }, [visible])
 

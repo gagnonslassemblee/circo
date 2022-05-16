@@ -1,0 +1,141 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+.ui.button {
+border-radius: 0px;
+font-family: DMSans;
+font-style: normal;
+font-weight: 700;
+color: @blue;
+}
+
+.ui.button.padded { 
+padding: 24px 48px;
+}
+
+.ui.button.secondary {
+padding: 4px 12px;
+height: 32px;
+border: 2px solid @blue;
+box-sizing: border-box;
+background-color: transparent;
+color: @blue;
+}
+
+.ui.button.tertiary {
+padding: 12px 24px;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+font-size: 17px;
+line-height: 24px;
+letter-spacing: -0.02em;
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px 16px;
+}
+
+.ui.button.secondary a {
+color: @blue;
+}
+.ui.button.secondary:hover {
+	background-color: @blue;
+	color: @white;
+}
+.ui.button.secondary a:hover {
+	color: @white;
+}
+
+/* .ui.primary {
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center; 
+width: fit-content;
+font-family: DMSans;
+margin: auto;
+} */
+
+
+.chrono.ui.primary.button {
+position: relative;
+top: 100px;
+}
+
+.ui.ensavoirplus {
+position: static;
+height: 24px;
+
+font-family: DMSans;
+font-style: normal;
+font-weight: 700;
+font-size: 13px;
+line-height: 24px;
+
+/* identical to box height, or 185% */
+letter-spacing: -0.02em;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px 16px;
+}
+
+/** Scrutin uninominal **/
+.jm .ui.button:hover {
+background-color: @blue;
+color: @white;
+}
+
+.footer .button {
+margin-top: 40px;
+margin-bottom: 40px;
+}
+/** Jugement Majoritaire **/
+.jm .ui.button {
+pointer-events: inherit !important;
+margin-top: 3px;
+}
+
+/** Page home **/
+.num-ballots .overlap .button {
+margin-right: 0px;
+}
+.title .button {
+margin-top: 30px;
+}
+.navigation .button {
+display: flex;
+align-items: center;
+}
+
+/* Selector component */
+.ui.selector {
+background: @lightGrey;
+border-radius: 3px;
+padding: 3px;
+display: flex;
+margin: auto;
+}
+.ui.selector .ui.button {
+color: @grey;
+}
+.ui.button.rounded {
+border-radius: 3px;
+}
+
+.ui.selector .ui.button:hover {
+background-color: @blue;
+color: @white;
+}
+.ui.selector .ui.button.active {
+background-color: @white;
+color: @blue;
+}
+@media only screen and (max-width : @tabletBreakpoint) {
+.ui.selector {
+flex-direction: column;
+}
+}

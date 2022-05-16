@@ -1,0 +1,54 @@
+/*******************************
+     User Global Variables
+*******************************/
+@path-fonts: "../fonts";
+@page-width: 1440px;
+
+/*-------------------
+      Site Colors
+--------------------*/
+
+/*---  Colors  ---*/
+@black            : #1B1C1D;
+@blue             : #2400FD;
+@green            : #4CAF50;
+@grey             : #6D6D6D;
+@orange           : #FF9800;
+@pink             : #E91E63;
+@purple           : #9C27B0;
+@red              : #FF3E37;
+@teal             : #1de9b6;
+@yellow           : #FFEB3B;
+
+/*---  Dark Colors  ---*/
+@darkBlue         : #1C079C;
+@darkGreen        : #006400;
+
+/*---  Light Colors  ---*/
+@lightBlack       : #333333;
+@lightBlue        : #F4F5FF;
+@lightGreen       : #00E676;
+@lightOrange      : #FF9100;
+@lightPink        : #F50057;
+@lightPurple      : #D500F9;
+@lightRed         : #FF1744;
+@lightTeal        : #1DE9B6;
+@lightYellow      : #FFEA00;
+
+/*---   Neutrals  ---*/
+@fullBlack        : #000000;
+@darkGrey         : #AAAAAA;
+@lightGrey        : #DCDDDE;
+@offWhite         : #FAFAFA;
+@darkWhite        : #F0F0F0;
+@white            : #FFFFFF;
+
+/*-------------------
+    Brand Colors
+--------------------*/
+
+@primaryColor        : @blue;
+@secondaryColor      : @grey;
+
+@lightPrimaryColor   : @lightBlue;
+@lightSecondaryColor : @lightGrey;

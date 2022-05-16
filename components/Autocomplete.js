@@ -30,7 +30,6 @@ const AutoComplete = ({getSuggestions, onEnter}) => {
       setSuggestions([])
       setShowSuggestions(false);
     } else {
-      console.log("results", request.results)
       setSuggestions(request.results || [])
       setActiveSuggestionIndex(0);
       setShowSuggestions(true);
@@ -38,15 +37,21 @@ const AutoComplete = ({getSuggestions, onEnter}) => {
   };
 
   const onClick = (e) => {
+    const candidates = suggestions.filter(s => s.label == e.target.innerText)
+    if (candidates.length !== 1) {
+      throw "Can't recover suggestion"
+    }
     setSuggestions([]);
     setInput(e.target.innerText);
     setActiveSuggestionIndex(0);
     setShowSuggestions(false);
+    onEnter(candidates[0])
   };
 
   const onKeyDown = (e) => {
     // User pressed the enter key
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 && suggestions[activeSuggestionIndex] !== undefined) {
+      console.log('Go')
       setInput(suggestions[activeSuggestionIndex].label);
       setActiveSuggestionIndex(0);
       onEnter(suggestions[activeSuggestionIndex])
